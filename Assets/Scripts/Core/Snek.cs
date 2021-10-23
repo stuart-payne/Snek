@@ -14,6 +14,7 @@ namespace Snek.Core
 
         private Queue<SnakePiece> m_Body;
         private Vector2Int m_HeadPosition;
+        private Direction m_LastDirectionMoved;
         private int m_CurrentLength;
 
         private void Awake()
@@ -39,6 +40,8 @@ namespace Snek.Core
                 var snakePiece = InstantiateSnakePieceAtGridPosition(piecePosition);
                 AddSnakePiece(snakePiece,piecePosition);
             }
+
+            m_LastDirectionMoved = dir;
         }
 
         private SnakePiece InstantiateSnakePieceAtGridPosition(Vector2Int position)
@@ -53,7 +56,9 @@ namespace Snek.Core
 
         public void MoveSnek(Direction dir)
         {
-            var newPosition = m_Board.PositionToGridPosition(m_HeadPosition + Utils.DirectionToVector2Int(dir));
+            var dirToMove = Utils.IsOppositeDirection(dir, m_LastDirectionMoved) ? m_LastDirectionMoved : dir;
+            var newPosition = m_Board.PositionToGridPosition(m_HeadPosition + Utils.DirectionToVector2Int(dirToMove));
+            m_LastDirectionMoved = dirToMove;
             var gridPiece = m_Board.GetGridPieceAtGridPosition(newPosition);
             var gridItem = gridPiece.Contains();
 

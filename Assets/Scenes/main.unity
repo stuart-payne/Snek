@@ -226,8 +226,11 @@ GameObject:
   m_Component:
   - component: {fileID: 380940785}
   - component: {fileID: 380940784}
+  - component: {fileID: 380940788}
+  - component: {fileID: 380940787}
+  - component: {fileID: 380940786}
   m_Layer: 0
-  m_Name: SnakeManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,6 +265,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &380940786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380940783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8336eb36221167542b6a8009b448f7a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TickRate: 0.337
+--- !u!114 &380940787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380940783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10c25606fe42d408c8f52fe3de8776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Snek: {fileID: 380940784}
+  m_GameInput: {fileID: 380940788}
+  m_Ticker: {fileID: 380940786}
+--- !u!114 &380940788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380940783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404aa611bdd91ae4cb2a5bac6d429dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &427254541
 GameObject:
   m_ObjectHideFlags: 0

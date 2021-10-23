@@ -21,5 +21,10 @@ namespace Snek.Core
                 _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
             };
         }
+
+        public static bool IsOppositeDirection(Direction dir1, Direction dir2)
+        {
+            return Math.Abs(dir1 - dir2) == 2;
+        }
     }
 }
