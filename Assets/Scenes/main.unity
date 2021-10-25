@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 380940788}
   - component: {fileID: 380940787}
   - component: {fileID: 380940786}
+  - component: {fileID: 380940789}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -293,6 +294,7 @@ MonoBehaviour:
   m_Snek: {fileID: 380940784}
   m_GameInput: {fileID: 380940788}
   m_Ticker: {fileID: 380940786}
+  m_AppleSpawner: {fileID: 380940789}
 --- !u!114 &380940788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +307,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404aa611bdd91ae4cb2a5bac6d429dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &380940789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380940783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22e3c014c3d13343af483446e4fc74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Board: {fileID: 1433653183}
+  m_ApplePrefab: {fileID: 1367412706237544075, guid: 3722e1270fb54424982188b9f63366e2, type: 3}
 --- !u!1 &427254541
 GameObject:
   m_ObjectHideFlags: 0
