@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 
@@ -52,6 +54,46 @@ namespace Snek.Core
             return value % bound;
         }
 
+        public GridPiece GetGridPiece(Vector2Int position) => Grid[position.x, position.y];
+
+        public void AddGridItem(Vector2Int position, IGridItem gridItem) =>
+            Grid[position.x, position.y].AddGridItem(gridItem);
+
+        public void RemoveGridItem(Vector2Int position) => Grid[position.x, position.y].RemoveItem();
+
+        public List<GridPiece> GetEmptyGridPieces()
+        {
+            var emptyGridPieces = new List<GridPiece>();
+            foreach (var gridPiece in Grid)
+            {
+                if(gridPiece.Contains() == GridItem.None)
+                    emptyGridPieces.Add(gridPiece);
+            }
+
+            return emptyGridPieces;
+        }
+
+
+        public List<GridPiece> GetEmptyGridPiecesWithExclusionZone(Vector2Int exclusionPoint, float radius)
+        {
+            var validGridPieces = new List<GridPiece>();
+            for (var x = 0; x < Grid.GetLength(0); x++)
+            {
+                if(x == 0 || x == Grid.GetLength(0) - 1)
+                    continue;
+                for (var y = 0; y < Grid.GetLength(1); y++)
+                {
+                    if(y == 0 || y == Grid.GetLength(1) - 1)
+                        continue;
+                    var position = new Vector2Int(x, y);
+                    if(Vector2Int.Distance(position, exclusionPoint) < radius)
+                        continue;
+                    validGridPieces.Add(Grid[position.x, position.y]);
+                }
+            }
+            return validGridPieces;
+        }
+
         public Vector2Int GetRandomPosition()
         {
             return new Vector2Int(
@@ -69,7 +111,6 @@ namespace Snek.Core
 
         public Vector3 GridPositionToWorldPosition(Vector2Int position)
         {
-            Debug.Log(position);
             return Grid[position.x, position.y].transform.position;
         }
         

@@ -42,6 +42,7 @@ namespace Snek.Core
             }
 
             m_LastDirectionMoved = dir;
+            FinishedSpawningEvent?.Invoke();
         }
 
         private SnakePiece InstantiateSnakePieceAtGridPosition(Vector2Int position)
@@ -66,6 +67,7 @@ namespace Snek.Core
             {
                 case GridItem.Apple:
                     AddSnakePiece(InstantiateSnakePieceAtGridPosition(newPosition), gridPiece);
+                    AppleEatenEvent?.Invoke();
                     break;
                 case GridItem.Rock:
                     DeathEvent?.Invoke();
@@ -110,5 +112,7 @@ namespace Snek.Core
         }
 
         public event Action DeathEvent;
+        public event Action AppleEatenEvent;
+        public event Action FinishedSpawningEvent;
     }
 }
