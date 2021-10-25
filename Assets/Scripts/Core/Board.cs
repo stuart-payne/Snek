@@ -76,6 +76,7 @@ namespace Snek.Core
 
         public List<GridPiece> GetEmptyGridPiecesWithExclusionZone(Vector2Int exclusionPoint, float radius)
         {
+            // Used by RockSpawner, we do not want to spawn rocks on edge so we skip 0 and end both for x and y
             var validGridPieces = new List<GridPiece>();
             for (var x = 0; x < Grid.GetLength(0); x++)
             {
@@ -88,7 +89,9 @@ namespace Snek.Core
                     var position = new Vector2Int(x, y);
                     if(Vector2Int.Distance(position, exclusionPoint) < radius)
                         continue;
-                    validGridPieces.Add(Grid[position.x, position.y]);
+                    var gridPiece = Grid[position.x, position.y];
+                    if(gridPiece.Contains() == GridItem.None)
+                        validGridPieces.Add(gridPiece);
                 }
             }
             return validGridPieces;

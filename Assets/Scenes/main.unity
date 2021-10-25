@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 380940787}
   - component: {fileID: 380940786}
   - component: {fileID: 380940789}
+  - component: {fileID: 380940790}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -295,6 +296,8 @@ MonoBehaviour:
   m_GameInput: {fileID: 380940788}
   m_Ticker: {fileID: 380940786}
   m_AppleSpawner: {fileID: 380940789}
+  m_RockSpawner: {fileID: 380940790}
+  RockSpawnRate: 3
 --- !u!114 &380940788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +324,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Board: {fileID: 1433653183}
   m_ApplePrefab: {fileID: 1367412706237544075, guid: 3722e1270fb54424982188b9f63366e2, type: 3}
+--- !u!114 &380940790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380940783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28566e90f07c5284bb3101caa3cf2ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RockPrefab: {fileID: 507006461528192764, guid: 03f47288e37571641883d8d738d79a54, type: 3}
+  m_Board: {fileID: 1433653183}
+  Rocks: []
 --- !u!1 &427254541
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +442,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1992557410955754693, guid: 73e278ac0d63f0e468da9d482d6c5f61, type: 3}
       propertyPath: m_Name
-      value: Grid
+      value: Board
       objectReference: {fileID: 0}
     - target: {fileID: 1992557410955754695, guid: 73e278ac0d63f0e468da9d482d6c5f61, type: 3}
       propertyPath: m_RootOrder
