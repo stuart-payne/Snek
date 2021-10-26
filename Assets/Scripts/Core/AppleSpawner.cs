@@ -12,7 +12,6 @@ namespace Snek.Core
 
         public void SpawnNewApple()
         {
-            Debug.Log("I got called");
             var validPieces = m_Board.GetEmptyGridPieces();
             var gridPiece = validPieces[Random.Range(0, validPieces.Count)];
             if (!m_Apple)

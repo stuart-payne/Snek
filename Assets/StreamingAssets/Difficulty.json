@@ -1,0 +1,25 @@
+﻿{
+  "Difficulties" : [
+    {
+      "Name": "Easy",
+      "SecondsPerTick": "1.0",
+      "TicksPerStoneSpawn": "0",
+      "GridXSize": "12",
+      "GridYSize": "12"
+    },
+    {
+      "Name": "Normal",
+      "SecondsPerTick": "0.5",
+      "TicksPerStoneSpawn": "30",
+      "GridXSize": "16",
+      "GridYSize": "16"
+    },
+    {
+      "Name": "Stupid",
+      "SecondPerTick": "0.25",
+      "TicksPerStoneSpawn": "15",
+      "GridXSize": "24",
+      "GridYSize": "24"
+    }
+  ]
+}

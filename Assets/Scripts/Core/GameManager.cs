@@ -13,9 +13,17 @@ namespace Snek.Core
         [SerializeField] private Ticker m_Ticker;
         [SerializeField] private AppleSpawner m_AppleSpawner;
         [SerializeField] private RockSpawner m_RockSpawner;
-        [SerializeField] private int RockSpawnRate = 30;
+        [SerializeField] private int m_RockSpawnRate = 30;
 
         private int m_Ticks = 0;
+        
+        public Difficulty[] Difficulties { get; private set; }
+
+        private void Awake()
+        {
+            var difficultyParser = new DifficultyParser();
+            Difficulties = difficultyParser.GetDifficultiesFromFile().Difficulties;
+        }
 
         private void Start()
         {
@@ -30,7 +38,7 @@ namespace Snek.Core
         {
             m_Snek.MoveSnek(m_GameInput.DirectionToMove);
             m_Ticks++;
-            if(m_Ticks % RockSpawnRate == 0)
+            if(m_Ticks % m_RockSpawnRate == 0)
                 m_RockSpawner.SpawnRock(m_Snek.HeadPosition);
         }
     }
