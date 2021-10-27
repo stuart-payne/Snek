@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Snek.Core
 {
-    public class DifficultyParser
+    public class DifficultyParser : IDifficultyProvider
     {
         private const string m_FileName = "Difficulty.json";
         
-        public DifficultyArray GetDifficultiesFromFile()
+        public Difficulty[] GetDifficulties()
         {
             var path = Path.Combine(Application.streamingAssetsPath, m_FileName);
             string json;
@@ -17,7 +17,8 @@ namespace Snek.Core
             {
                 json = r.ReadToEnd();
             }
-            return JsonUtility.FromJson<DifficultyArray>(json);
+            var difficultyArray = JsonUtility.FromJson<DifficultyArray>(json);
+            return difficultyArray.Difficulties;
         }
     }
 }

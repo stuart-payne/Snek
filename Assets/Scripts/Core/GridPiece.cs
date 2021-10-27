@@ -15,5 +15,6 @@ namespace Snek.Core
 
         public void AddGridItem(IGridItem gridItem) => m_GridItem = gridItem;
         public void RemoveItem() => m_GridItem = null;
+        public Vector2Int GridPosition { get; set; }
     }
 }
