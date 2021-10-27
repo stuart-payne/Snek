@@ -19,25 +19,25 @@ namespace Snek.Core
 
         public GridPiece[,] Grid;
 
-        private void Awake()
+        public void GenerateGrid(int width, int height)
         {
-            Grid = new GridPiece[m_Width, m_Height];
-            GenerateGrid();
-        }
-
-        private void GenerateGrid()
-        {
-            for (var x = 0; x < m_Width; x++)
+            Grid = new GridPiece[width, height];
+            for (var x = 0; x < width; x++)
             {
-                for (var y = 0; y < m_Height; y++)
+                for (var y = 0; y < height; y++)
                 {
-                    Grid[x, y] = Instantiate(
+                    var gridPiece = Instantiate(
                         m_Square,
-                        new Vector3(x - m_Width / 2, y - m_Height / 2, 0),
+                        new Vector3(x - width / 2, y - height / 2, 0),
                         Quaternion.identity,
                         transform).GetComponent<GridPiece>();
+                    Grid[x, y] = gridPiece;
+                    gridPiece.GridPosition = new Vector2Int(width, height);
                 }
             }
+
+            m_Width = width;
+            m_Height = height;
         }
 
         private int WrapValue(int value, int bound)

@@ -7,9 +7,7 @@ namespace Snek.Core
 {
     public class Ticker : MonoBehaviour
     {
-        [Range(0.1f, 2.0f)]
-        public float TickRate;
-
+        private float m_TickRate;
         private IEnumerator m_TickCoroutine;
         private List<ITickable> m_Tickables;
 
@@ -18,9 +16,12 @@ namespace Snek.Core
             m_Tickables = new List<ITickable>();
         }
 
+
+        public void SetTickRate(float tickRate) => m_TickRate = tickRate;
+
         public void StartTick()
         {
-            m_TickCoroutine = Tick(TickRate);
+            m_TickCoroutine = Tick(m_TickRate);
             StartCoroutine(m_TickCoroutine);
         }
 

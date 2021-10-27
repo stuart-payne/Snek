@@ -64,7 +64,7 @@ namespace Snek.Tests
         {
             var tickerObj = new GameObject();
             var ticker = tickerObj.AddComponent<Ticker>();
-            ticker.TickRate = tickRate;
+            ticker.SetTickRate(tickRate);
             return ticker;
         }
     }

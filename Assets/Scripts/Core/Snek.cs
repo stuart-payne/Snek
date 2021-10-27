@@ -23,13 +23,8 @@ namespace Snek.Core
             m_Body = new Queue<SnakePiece>();
             m_CurrentLength = m_StartingLength;
         }
-        
-        private void Start()
-        {
-            SpawnStartingBody();
-        }
 
-        private void SpawnStartingBody()
+        public void SpawnStartingBody()
         {
             Vector2Int position = m_Board.GetRandomPosition();
             var dir = Utils.GetRandomDirection();
