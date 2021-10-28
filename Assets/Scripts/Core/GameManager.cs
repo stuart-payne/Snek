@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Snek.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Snek.Core
 {
@@ -13,7 +14,8 @@ namespace Snek.Core
         [SerializeField] private Ticker m_Ticker;
         [SerializeField] private AppleSpawner m_AppleSpawner;
         [SerializeField] private RockSpawner m_RockSpawner;
-        [SerializeField] private Board m_Board; 
+        [SerializeField] private Board m_Board;
+        [SerializeField] private GameoverUIManager m_GameoverUIManager;
         
         private int m_RockSpawnRate = 30;
         private int m_Ticks = 0;
@@ -39,11 +41,14 @@ namespace Snek.Core
             m_Snek.SpawnStartingBody();
             m_Snek.AppleEatenEvent += m_AppleSpawner.SpawnNewApple;
             m_Snek.DeathEvent += () => Debug.Log("DEAD SNEK");
+            m_Snek.DeathEvent += OnSnekDeath;
             SetRockSpawnRate(difficulty.TicksPerStoneSpawn);
             TickEvent += MoveSnek;
             m_Ticker.AddTickable(this);
             m_Ticker.StartTick();
         }
+
+        public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         private void SetRockSpawnRate(int ticksPerStoneSpawn)
         {
@@ -55,6 +60,12 @@ namespace Snek.Core
         private void BuildBoardWithDifficulty(int width, int height)
         {
             m_Board.GenerateGrid(width, height);
+        }
+
+        private void OnSnekDeath()
+        {
+            m_Ticker.StopTick();
+            m_GameoverUIManager.gameObject.SetActive(true);
         }
 
         private void TickRockSpawner()

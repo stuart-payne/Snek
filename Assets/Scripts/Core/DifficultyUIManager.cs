@@ -10,7 +10,8 @@ namespace Snek.Core
     {
         [SerializeField] private GameManager m_GameManager;
         [SerializeField] private GameObject m_ButtonPrefab;
-        [SerializeField] private GameObject m_Panel;
+        [SerializeField] private GameObject m_ButtonPanel;
+        [SerializeField] private GameObject m_ParentPanel;
 
         private void Start()
         {
@@ -22,9 +23,9 @@ namespace Snek.Core
             var difficulties = m_GameManager.Difficulties;
             foreach (var difficulty in difficulties)
             {
-                var button = Instantiate(m_ButtonPrefab, m_Panel.transform).GetComponent<Button>();
+                var button = Instantiate(m_ButtonPrefab, m_ButtonPanel.transform).GetComponent<Button>();
                 button.onClick.AddListener(() => m_GameManager.SetupGame(difficulty));
-                button.onClick.AddListener(() => m_Panel.SetActive(false));
+                button.onClick.AddListener(() => m_ParentPanel.SetActive(false));
                 button.GetComponentInChildren<Text>().text = difficulty.Name;
             }
         }
