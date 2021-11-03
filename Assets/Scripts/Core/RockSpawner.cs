@@ -29,6 +29,9 @@ namespace Snek.Core
                 Quaternion.identity).GetComponent<Rock>(); 
             Rocks.Add(rock);
             selectedGridPiece.AddGridItem(rock);
+            RockSpawned?.Invoke();
         }
+
+        public event Action RockSpawned;
     }
 }

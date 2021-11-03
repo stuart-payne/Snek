@@ -533,11 +533,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Snek: {fileID: 380940784}
   m_GameInput: {fileID: 380940788}
+  m_AIGameInput: {fileID: 1199611023}
   m_Ticker: {fileID: 380940786}
   m_AppleSpawner: {fileID: 380940789}
   m_RockSpawner: {fileID: 380940790}
   m_Board: {fileID: 1433653183}
   m_GameoverUIManager: {fileID: 765544360}
+  m_UseAIInput: 1
 --- !u!114 &380940788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,6 +1098,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087163647}
   m_CullTransparentMesh: 1
+--- !u!1 &1199611022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1199611024}
+  - component: {fileID: 1199611023}
+  m_Layer: 0
+  m_Name: AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1199611023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199611022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6891d9e8659f24cb0d2187ed236fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Board: {fileID: 1433653183}
+  m_Snek: {fileID: 380940784}
+  m_RockSpawner: {fileID: 380940790}
+  m_AppleSpawner: {fileID: 380940789}
+--- !u!4 &1199611024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199611022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 531.67084, y: 228.18405, z: -0.09202499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1433653183 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1992557410955754692, guid: 73e278ac0d63f0e468da9d482d6c5f61, type: 3}

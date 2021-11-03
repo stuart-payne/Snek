@@ -14,6 +14,8 @@ namespace Snek.Core
         private readonly Vector2Int[] m_ReachableChecks = {
             Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right,
         };
+        
+        public Vector2Int CurrentApplePosition { get; set; }
 
         public void SpawnNewApple()
         {
@@ -29,6 +31,7 @@ namespace Snek.Core
             else
                 m_Apple.transform.position = gridPiece.transform.position;
             gridPiece.AddGridItem(m_Apple);
+            CurrentApplePosition = gridPiece.GridPosition;
         }
 
         private bool CheckIfPossibleForPlayer(GridPiece gridPiece)

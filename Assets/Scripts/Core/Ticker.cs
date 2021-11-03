@@ -10,10 +10,12 @@ namespace Snek.Core
         private float m_TickRate;
         private IEnumerator m_TickCoroutine;
         private List<ITickable> m_Tickables;
+        private List<ITickable> m_LateTickables;
 
         private void Awake()
         {
             m_Tickables = new List<ITickable>();
+            m_LateTickables = new List<ITickable>();
         }
 
 
@@ -32,6 +34,8 @@ namespace Snek.Core
 
         public void AddTickable(ITickable tickable) => m_Tickables.Add(tickable);
         public void RemoveTickable(ITickable tickable) => m_Tickables.Remove(tickable);
+        public void AddLateTickable(ITickable tickable) => m_LateTickables.Add(tickable);
+        public void RemoveLateTickable(ITickable tickable) => m_LateTickables.Remove(tickable);
 
         IEnumerator Tick(float secondsPerTick)
         {
@@ -41,6 +45,11 @@ namespace Snek.Core
                 foreach (var tickable in m_Tickables)
                 {
                     tickable.Tick();
+                }
+
+                foreach (var lateTickable in m_LateTickables)
+                {
+                    lateTickable.Tick();
                 }
             }
         }

@@ -4,10 +4,16 @@ using UnityEngine;
 
 namespace Snek.Core
 {
-    public class GridPiece : MonoBehaviour
+    public class GridPiece : MonoBehaviour, INode
     {
         private IGridItem m_GridItem;
-        
+
+        public Board BoardRef;
+
+        public int Cost => 1;
+
+        public INode[] GetNeighbours() => BoardRef.GetGridPieceNeighbours(this).ToArray();
+
         public GridItem Contains()
         {
             return m_GridItem?.GridItemType ?? GridItem.None;

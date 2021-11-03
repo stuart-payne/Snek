@@ -12,6 +12,11 @@ namespace Snek.Core
         [SerializeField] private GameObject m_Square;
         [SerializeField] private int m_Width;
         [SerializeField] private int m_Height;
+
+        private Vector2Int[] m_PossibleDirections =
+        {
+            Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right
+        };
         
         public int Height => m_Height;
 
@@ -32,7 +37,8 @@ namespace Snek.Core
                         Quaternion.identity,
                         transform).GetComponent<GridPiece>();
                     Grid[x, y] = gridPiece;
-                    gridPiece.GridPosition = new Vector2Int(width, height);
+                    gridPiece.GridPosition = new Vector2Int(x, y);
+                    gridPiece.BoardRef = this;
                 }
             }
 
@@ -95,6 +101,20 @@ namespace Snek.Core
                 }
             }
             return validGridPieces;
+        }
+
+        public List<GridPiece> GetGridPieceNeighbours(GridPiece gridPiece)
+        {
+            var possiblePieces = new List<GridPiece>();
+            foreach (var dir in m_PossibleDirections)
+            {
+                var newPosition = PositionToGridPosition(dir + gridPiece.GridPosition);
+                var nextGridPiece = Grid[newPosition.x, newPosition.y];
+                
+                if(nextGridPiece.Contains() == GridItem.None || nextGridPiece.Contains() == GridItem.Apple)
+                    possiblePieces.Add(nextGridPiece);
+            }
+            return possiblePieces;
         }
 
         public Vector2Int GetRandomPosition()

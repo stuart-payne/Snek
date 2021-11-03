@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Snek.Core
 {
-    public class GameInput : MonoBehaviour
+    public class GameInput : MonoBehaviour, IGameInput
     {
         public Direction DirectionToMove { get; private set; }
 

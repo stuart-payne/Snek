@@ -11,11 +11,15 @@ namespace Snek.Core
     {
         [SerializeField] private Snek m_Snek;
         [SerializeField] private GameInput m_GameInput;
+        [SerializeField] private AIGameInput m_AIGameInput;
         [SerializeField] private Ticker m_Ticker;
         [SerializeField] private AppleSpawner m_AppleSpawner;
         [SerializeField] private RockSpawner m_RockSpawner;
         [SerializeField] private Board m_Board;
         [SerializeField] private GameoverUIManager m_GameoverUIManager;
+        [SerializeField] private bool m_UseAIInput;
+
+        private IGameInput m_InputToUse;
         
         private int m_RockSpawnRate = 30;
         private int m_Ticks = 0;
@@ -46,6 +50,15 @@ namespace Snek.Core
             TickEvent += MoveSnek;
             m_Ticker.AddTickable(this);
             m_Ticker.StartTick();
+            
+            if (m_UseAIInput)
+            {
+                m_InputToUse = m_AIGameInput;
+                m_AIGameInput.gameObject.SetActive(true);
+                m_Ticker.AddLateTickable(m_AIGameInput);
+            }
+            else
+                m_InputToUse = m_GameInput;
         }
 
         public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -75,7 +88,7 @@ namespace Snek.Core
                 m_RockSpawner.SpawnRock(m_Snek.HeadPosition);
         }
         
-        private void MoveSnek() => m_Snek.MoveSnek(m_GameInput.DirectionToMove);
+        private void MoveSnek() => m_Snek.MoveSnek(m_InputToUse.DirectionToMove);
         
         public void Tick()
         {
