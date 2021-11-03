@@ -8,7 +8,7 @@ If you want to open this project on your own machine, download these files eithe
 
 You will then need to download [Unity Hub](https://unity3d.com/get-unity/download) (if you don't already have it).
 
-Open Unity Hub and press the Add button in the Projects tab and chose the folder you either cloned the repo to or unzipped the zip file to. Unity Hub will then download the the correct editor version and after that, you should be able to use the project.
+Open Unity Hub and press the Add button in the Projects tab and chose the folder you either cloned the repo to or unzipped the zip file to. Unity Hub will then download the correct editor version and after that, you should be able to use the project.
 
 # Articles
 
